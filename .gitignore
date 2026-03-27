@@ -1,0 +1,46 @@
+# macOS
+.DS_Store
+
+# Xcode build output
+build/
+DerivedData/
+*.moved-aside
+*.xcuserstate
+
+# Per-user Xcode settings
+*.xcworkspace/xcuserdata/
+*.xcodeproj/xcuserdata/
+xcuserdata/
+
+# Swift Package Manager
+.build/
+.swiftpm/
+Packages/
+Package.resolved
+
+# Fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots/
+fastlane/test_output/
+
+# CocoaPods
+Pods/
+
+# Carthage
+Carthage/Build/
+
+# Mint
+.mint/
+
+# Tuist
+.tuist-cache/
+Tuist/.build/
+
+# Local environment overrides
+.env
+.env.*
+
+# Cursor / agent notes
+.cursor/
+AGENTS.md
