@@ -24,18 +24,6 @@ This project is intentionally simplified. It does **not** model:
 - weapon-specific vs target-specific probability matrices
 - dynamic reallocation over time
 
-## Suggested folder layout in Xcode
-
-```text
-WTAModel/
-  App/
-  Models/
-  Solver/
-  ViewModels/
-  Views/
-  Resources/
-```
-
 ## Better next steps
 
 - [x] replace scalar `sspk` with a per-shot `p[i][j]` profile generated from each threat's base probability and follow-on decay
