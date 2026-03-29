@@ -57,6 +57,7 @@ struct ThreatEditorView: View {
             } else {
               threat.maxAssignedInterceptors = nil
             }
+            onRecalculate()
           }
         )
       )
@@ -68,6 +69,7 @@ struct ThreatEditorView: View {
               get: { min(threat.maxAssignedInterceptors ?? 0, stepperUpperBound) },
               set: {
                 threat.maxAssignedInterceptors = min(max($0, 0), stepperUpperBound)
+                onRecalculate()
               }
             ),
             in: 0...stepperUpperBound
@@ -94,6 +96,7 @@ struct ThreatEditorView: View {
                 } else {
                   threat.maxAssignedInterceptors = max(Int(filteredValue) ?? 0, 0)
                 }
+                onRecalculate()
               }
             )
           )
@@ -227,4 +230,3 @@ struct ThreatEditorView: View {
     }
   }
 }
-

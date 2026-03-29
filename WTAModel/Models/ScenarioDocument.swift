@@ -1,7 +1,6 @@
 import SwiftUI
 import UniformTypeIdentifiers
 
-@MainActor
 struct ScenarioDocument: FileDocument {
   static var readableContentTypes: [UTType] { [.json] }
   
@@ -25,4 +24,3 @@ struct ScenarioDocument: FileDocument {
     return FileWrapper(regularFileWithContents: data)
   }
 }
-

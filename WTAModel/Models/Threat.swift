@@ -10,7 +10,7 @@ struct Threat: Identifiable, Hashable, Codable {
   var uncertainty: Double
   var maxAssignedInterceptors: Int?
   
-  init(
+  nonisolated init(
     id: UUID = UUID(),
     name: String,
     value: Double,
@@ -30,7 +30,7 @@ struct Threat: Identifiable, Hashable, Codable {
     self.maxAssignedInterceptors = maxAssignedInterceptors
   }
   
-  func shotProbabilities(maxInterceptors: Int) -> [Double] {
+  nonisolated func shotProbabilities(maxInterceptors: Int) -> [Double] {
     guard maxInterceptors > 0 else { return [] }
     
     return (0..<maxInterceptors).map { shotIndex in
@@ -38,19 +38,19 @@ struct Threat: Identifiable, Hashable, Codable {
     }
   }
   
-  func shotProbability(at shotIndex: Int) -> Double {
+  nonisolated func shotProbability(at shotIndex: Int) -> Double {
     precondition(shotIndex >= 0, "shotIndex must be >= 0")
     return Self.clampProbability(baseShotProbability - (Double(shotIndex) * followOnDecay))
   }
   
-  private static func clampProbability(_ value: Double) -> Double {
+  private nonisolated static func clampProbability(_ value: Double) -> Double {
     min(max(value, 0.0), 1.0)
   }
 }
 
 extension Threat {
   /// Minimal row for displaying a persisted allocation (name only; parameters are unused by result rows).
-  static func displayStub(id: UUID, name: String) -> Threat {
+  nonisolated static func displayStub(id: UUID, name: String) -> Threat {
     Threat(
       id: id,
       name: name,
@@ -74,7 +74,7 @@ extension Threat {
     case sspk
   }
   
-  init(from decoder: Decoder) throws {
+  nonisolated init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: CodingKeys.self)
     
     id = try container.decodeIfPresent(UUID.self, forKey: .id) ?? UUID()
@@ -91,7 +91,7 @@ extension Threat {
     maxAssignedInterceptors = try container.decodeIfPresent(Int.self, forKey: .maxAssignedInterceptors)
   }
   
-  func encode(to encoder: Encoder) throws {
+  nonisolated func encode(to encoder: Encoder) throws {
     var container = encoder.container(keyedBy: CodingKeys.self)
     try container.encode(id, forKey: .id)
     try container.encode(name, forKey: .name)
@@ -103,4 +103,3 @@ extension Threat {
     try container.encodeIfPresent(maxAssignedInterceptors, forKey: .maxAssignedInterceptors)
   }
 }
-

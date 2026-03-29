@@ -1,7 +1,7 @@
 import Foundation
 
 enum MonteCarloSimulator {
-  static func summarize(
+  nonisolated static func summarize(
     threats: [Threat],
     allocation: [Int],
     doctrine: EngagementDoctrine,
@@ -52,17 +52,17 @@ enum MonteCarloSimulator {
     )
   }
   
-  private static func sampleProbability(baseline: Double, uncertainty: Double) -> Double {
+  private nonisolated static func sampleProbability(baseline: Double, uncertainty: Double) -> Double {
     let sampledValue = baseline + Double.random(in: -uncertainty...uncertainty)
     return min(max(sampledValue, 0.0), 1.0)
   }
   
-  private static func mean(_ values: [Double]) -> Double {
+  private nonisolated static func mean(_ values: [Double]) -> Double {
     guard !values.isEmpty else { return 0.0 }
     return values.reduce(0.0, +) / Double(values.count)
   }
   
-  private static func percentile(_ values: [Double], percentile: Double) -> Double {
+  private nonisolated static func percentile(_ values: [Double], percentile: Double) -> Double {
     guard !values.isEmpty else { return 0.0 }
     
     let sorted = values.sorted()
@@ -78,4 +78,3 @@ enum MonteCarloSimulator {
     return sorted[lowerIndex] + ((sorted[upperIndex] - sorted[lowerIndex]) * weight)
   }
 }
-

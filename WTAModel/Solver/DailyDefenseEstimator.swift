@@ -6,7 +6,7 @@ enum DailyDefenseEstimator {
     case greedy
   }
   
-  static func estimate(
+  nonisolated static func estimate(
     threats: [Threat],
     totalIncoming: Int,
     perThreatIncoming: [Int],
@@ -23,7 +23,7 @@ enum DailyDefenseEstimator {
     )
   }
   
-  static func estimate(
+  nonisolated static func estimate(
     threats: [Threat],
     totalIncoming: Int,
     perThreatIncoming: [Int],
@@ -81,7 +81,7 @@ enum DailyDefenseEstimator {
     )
   }
   
-  private static func normalizedIncomingDistribution(
+  private nonisolated static func normalizedIncomingDistribution(
     threats: [Threat],
     totalIncoming: Int,
     perThreatIncoming: [Int]
@@ -132,7 +132,7 @@ enum DailyDefenseEstimator {
     return distribution
   }
   
-  private static func expandedWarheads(
+  private nonisolated static func expandedWarheads(
     threats: [Threat],
     incomingDistribution: [Int]
   ) -> [Threat] {
@@ -150,4 +150,3 @@ enum DailyDefenseEstimator {
     }
   }
 }
-

@@ -1,7 +1,7 @@
 import Foundation
 
 enum AllocationEvaluator {
-  static func evaluate(
+  nonisolated static func evaluate(
     threats: [Threat],
     allocation: [Int],
     method: String,
@@ -48,4 +48,3 @@ enum AllocationEvaluator {
     )
   }
 }
-

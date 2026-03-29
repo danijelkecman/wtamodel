@@ -72,6 +72,16 @@ struct ContentView: View {
     } message: {
       Text(importErrorMessage ?? "Unknown error")
     }
+    .alert("Storage issue", isPresented: Binding(
+      get: { viewModel.persistenceErrorMessage != nil },
+      set: { if !$0 { viewModel.clearPersistenceError() } }
+    )) {
+      Button("OK", role: .cancel) {
+        viewModel.clearPersistenceError()
+      }
+    } message: {
+      Text(viewModel.persistenceErrorMessage ?? "Unknown error")
+    }
   }
   
   @ToolbarContentBuilder
@@ -123,4 +133,3 @@ struct ContentView: View {
   @Previewable @State var viewModel = WTAViewModel()
   ContentView(viewModel: viewModel)
 }
-

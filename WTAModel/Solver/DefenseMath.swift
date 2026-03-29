@@ -1,7 +1,7 @@
 import Foundation
 
 enum DefenseMath {
-  static func killProbability(shotProbabilities: [Double]) -> Double {
+  nonisolated static func killProbability(shotProbabilities: [Double]) -> Double {
     for probability in shotProbabilities {
       precondition((0.0...1.0).contains(probability), "shot probabilities must be in [0, 1]")
     }
@@ -15,12 +15,12 @@ enum DefenseMath {
     return 1.0 - missProbability
   }
   
-  static func effectiveKillProbability(shotProbabilities: [Double], pTrack: Double) -> Double {
+  nonisolated static func effectiveKillProbability(shotProbabilities: [Double], pTrack: Double) -> Double {
     precondition((0.0...1.0).contains(pTrack), "pTrack must be in [0, 1]")
     return pTrack * killProbability(shotProbabilities: shotProbabilities)
   }
   
-  static func expectedShotsConsumed(
+  nonisolated static func expectedShotsConsumed(
     shotProbabilities: [Double],
     pTrack: Double,
     doctrine: EngagementDoctrine
@@ -45,7 +45,7 @@ enum DefenseMath {
     }
   }
   
-  static func marginalGain(threat: Threat, currentInterceptors: Int) -> Double {
+  nonisolated static func marginalGain(threat: Threat, currentInterceptors: Int) -> Double {
     let beforeProbabilities = threat.shotProbabilities(maxInterceptors: currentInterceptors)
     let afterProbabilities = threat.shotProbabilities(maxInterceptors: currentInterceptors + 1)
     
@@ -62,7 +62,7 @@ enum DefenseMath {
   }
   
   /// Shots to assign to this threat when there is no shared interceptor budget (stops at zero marginal gain or per-threat cap).
-  static func independentOptimalInterceptorCount(for threat: Threat) -> Int {
+  nonisolated static func independentOptimalInterceptorCount(for threat: Threat) -> Int {
     let cap = threat.maxAssignedInterceptors ?? 10_000
     var count = 0
     while count < cap {
@@ -74,7 +74,7 @@ enum DefenseMath {
   }
   
   /// Upper range for marginal-gain charts: respects global cap when set, otherwise per-threat saturation.
-  static func chartInterceptorDisplayMax(threats: [Threat], globalInterceptorBudget: Int?) -> Int {
+  nonisolated static func chartInterceptorDisplayMax(threats: [Threat], globalInterceptorBudget: Int?) -> Int {
     let saturationPeak = threats.map { max(independentOptimalInterceptorCount(for: $0), 1) }.max() ?? 1
     if let budget = globalInterceptorBudget {
       return max(budget, saturationPeak, 1)

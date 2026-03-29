@@ -1,10 +1,10 @@
 import Foundation
 
 enum ExactAllocator {
-  static let defaultMaxAllocationStates = 250_000.0
+  nonisolated static let defaultMaxAllocationStates = 250_000.0
   
   /// `totalInterceptors == nil` means no global cap: each threat gets its independent optimal count (no shared budget).
-  static func solve(
+  nonisolated static func solve(
     threats: [Threat],
     totalInterceptors: Int?,
     doctrine: EngagementDoctrine,
@@ -41,9 +41,11 @@ enum ExactAllocator {
           doctrine: doctrine
         )
         
-        if best == nil || candidate.totalExpectedValue > best!.totalExpectedValue {
-          best = candidate
+        if let best, candidate.totalExpectedValue <= best.totalExpectedValue {
+          return
         }
+        
+        best = candidate
         return
       }
       
@@ -66,7 +68,7 @@ enum ExactAllocator {
     )
   }
   
-  static func estimatedAllocationStates(
+  nonisolated static func estimatedAllocationStates(
     threatCount: Int,
     totalInterceptors: Int?
   ) -> Double {
@@ -89,7 +91,7 @@ enum ExactAllocator {
     return result
   }
   
-  static func shouldRunExactly(
+  nonisolated static func shouldRunExactly(
     threatCount: Int,
     totalInterceptors: Int?,
     maxAllocationStates: Double = defaultMaxAllocationStates
@@ -101,4 +103,3 @@ enum ExactAllocator {
     ) <= maxAllocationStates
   }
 }
-

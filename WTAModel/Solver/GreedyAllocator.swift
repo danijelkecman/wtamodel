@@ -2,7 +2,7 @@ import Foundation
 
 enum GreedyAllocator {
   /// `totalInterceptors == nil` means no global cap: assign until no positive marginal gain (per-threat caps still apply).
-  static func solve(
+  nonisolated static func solve(
     threats: [Threat],
     totalInterceptors: Int?,
     doctrine: EngagementDoctrine,
@@ -31,7 +31,7 @@ enum GreedyAllocator {
   }
   
   @discardableResult
-  private static func assignNextGreedyStep(threats: [Threat], allocation: inout [Int]) -> Bool {
+  private nonisolated static func assignNextGreedyStep(threats: [Threat], allocation: inout [Int]) -> Bool {
     var bestIndex = 0
     var bestGain = -Double.infinity
     

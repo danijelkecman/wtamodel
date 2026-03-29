@@ -4,8 +4,7 @@ import Foundation
 actor DailyJournalSaveActor {
   static let shared = DailyJournalSaveActor()
   
-  func save(_ observations: [DailyObservation]) {
-    DailyObservationsPersistence.save(observations)
+  func save(_ observations: [DailyObservation]) throws {
+    try DailyObservationsPersistence.save(observations)
   }
 }
-

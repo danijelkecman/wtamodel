@@ -6,14 +6,35 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		7A1A000D3B9A100100000001 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A1A000C3B9A100100000001 /* XCTest.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7A1A000A3B9A100100000001 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 69816A372F743454004BB54E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 69816A3E2F743454004BB54E;
+			remoteInfo = WTAModel;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		69816A3F2F743454004BB54E /* WTAModel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WTAModel.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A1A000B3B9A100100000001 /* WTAModelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WTAModelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A1A000C3B9A100100000001 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		69816A412F743454004BB54E /* WTAModel */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = WTAModel;
+			sourceTree = "<group>";
+		};
+		7A1A000E3B9A100100000001 /* WTAModelTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = WTAModelTests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -26,6 +47,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7A1A00083B9A100100000001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A1A000D3B9A100100000001 /* XCTest.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -33,6 +62,8 @@
 			isa = PBXGroup;
 			children = (
 				69816A412F743454004BB54E /* WTAModel */,
+				7A1A000E3B9A100100000001 /* WTAModelTests */,
+				7A1A000F3B9A100100000001 /* Frameworks */,
 				69816A402F743454004BB54E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -41,8 +72,17 @@
 			isa = PBXGroup;
 			children = (
 				69816A3F2F743454004BB54E /* WTAModel.app */,
+				7A1A000B3B9A100100000001 /* WTAModelTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		7A1A000F3B9A100100000001 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7A1A000C3B9A100100000001 /* XCTest.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -70,6 +110,29 @@
 			productReference = 69816A3F2F743454004BB54E /* WTAModel.app */;
 			productType = "com.apple.product-type.application";
 		};
+		7A1A00013B9A100100000001 /* WTAModelTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7A1A00133B9A100100000001 /* Build configuration list for PBXNativeTarget "WTAModelTests" */;
+			buildPhases = (
+				7A1A00073B9A100100000001 /* Sources */,
+				7A1A00083B9A100100000001 /* Frameworks */,
+				7A1A00093B9A100100000001 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7A1A00103B9A100100000001 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				7A1A000E3B9A100100000001 /* WTAModelTests */,
+			);
+			name = WTAModelTests;
+			packageProductDependencies = (
+			);
+			productName = WTAModelTests;
+			productReference = 7A1A000B3B9A100100000001 /* WTAModelTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -82,6 +145,10 @@
 				TargetAttributes = {
 					69816A3E2F743454004BB54E = {
 						CreatedOnToolsVersion = 26.4;
+					};
+					7A1A00013B9A100100000001 = {
+						CreatedOnToolsVersion = 26.4;
+						TestTargetID = 69816A3E2F743454004BB54E;
 					};
 				};
 			};
@@ -100,12 +167,20 @@
 			projectRoot = "";
 			targets = (
 				69816A3E2F743454004BB54E /* WTAModel */,
+				7A1A00013B9A100100000001 /* WTAModelTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		69816A3D2F743454004BB54E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A1A00093B9A100100000001 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -122,7 +197,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7A1A00073B9A100100000001 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7A1A00103B9A100100000001 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 69816A3E2F743454004BB54E /* WTAModel */;
+			targetProxy = 7A1A000A3B9A100100000001 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		69816A482F743455004BB54E /* Debug */ = {
@@ -310,6 +400,63 @@
 			};
 			name = Release;
 		};
+		7A1A00113B9A100100000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7C5F4G5426;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cxromos.WTAModelTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WTAModel.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/WTAModel";
+			};
+			name = Debug;
+		};
+		7A1A00123B9A100100000001 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7C5F4G5426;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cxromos.WTAModelTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WTAModel.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/WTAModel";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -327,6 +474,15 @@
 			buildConfigurations = (
 				69816A4B2F743455004BB54E /* Debug */,
 				69816A4C2F743455004BB54E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7A1A00133B9A100100000001 /* Build configuration list for PBXNativeTarget "WTAModelTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A1A00113B9A100100000001 /* Debug */,
+				7A1A00123B9A100100000001 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

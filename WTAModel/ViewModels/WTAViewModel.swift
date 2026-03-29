@@ -22,12 +22,18 @@ final class WTAViewModel {
   private(set) var exactResult: AllocationResult?
   private(set) var greedyDailyEstimate: DailyDefenseEstimate?
   private(set) var greedyResult: AllocationResult?
+  private(set) var persistenceErrorMessage: String?
   
   private var recomputeGeneration = 0
   private var recomputeTask: Task<Void, Never>?
   
   init() {
-    dailyObservations = DailyObservationsPersistence.load()
+    do {
+      dailyObservations = try DailyObservationsPersistence.load()
+    } catch {
+      dailyObservations = []
+      persistenceErrorMessage = "Failed to load saved days: \(error.localizedDescription)"
+    }
     recompute()
   }
   
@@ -189,8 +195,17 @@ final class WTAViewModel {
   private func persistDailyObservations() {
     let snapshot = dailyObservations
     Task {
-      await DailyJournalSaveActor.shared.save(snapshot)
+      do {
+        try await DailyJournalSaveActor.shared.save(snapshot)
+        self.persistenceErrorMessage = nil
+      } catch {
+        self.persistenceErrorMessage = "Failed to save saved days: \(error.localizedDescription)"
+      }
     }
+  }
+  
+  func clearPersistenceError() {
+    persistenceErrorMessage = nil
   }
   
   var threatForecasts: [ThreatForecast] {
@@ -337,4 +352,3 @@ enum SampleData {
     )
   }
 }
-

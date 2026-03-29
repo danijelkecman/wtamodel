@@ -44,7 +44,7 @@ extension Scenario {
     case threats
   }
   
-  init(from decoder: Decoder) throws {
+  nonisolated init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: CodingKeys.self)
     
     if container.contains(.totalInterceptors) {
@@ -66,7 +66,7 @@ extension Scenario {
     threats = try container.decode([Threat].self, forKey: .threats)
   }
   
-  func encode(to encoder: Encoder) throws {
+  nonisolated func encode(to encoder: Encoder) throws {
     var container = encoder.container(keyedBy: CodingKeys.self)
     if let totalInterceptors {
       try container.encode(totalInterceptors, forKey: .totalInterceptors)
@@ -82,4 +82,3 @@ extension Scenario {
     try container.encode(threats, forKey: .threats)
   }
 }
-
